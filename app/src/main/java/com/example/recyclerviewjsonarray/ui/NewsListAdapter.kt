@@ -11,16 +11,16 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.recyclerviewjsonarray.R
-import com.example.recyclerviewjsonarray.model.RecylerData
-import kotlinx.android.synthetic.main.news_list_row.view.*
+import com.example.recyclerviewjsonarray.databinding.NewsListRowBinding
+import com.example.recyclerviewjsonarray.model.RecyclerData
 
 class NewsListAdapter() : RecyclerView.Adapter<NewsListAdapter.CustomViewHolder>() {
 
-    var items = ArrayList<RecylerData>()
+    var items = ArrayList<RecyclerData>()
     lateinit var activity: Context
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setLatestData(items: ArrayList<RecylerData>, activity: FragmentActivity?) {
+    fun setLatestData(items: ArrayList<RecyclerData>, activity: FragmentActivity?) {
         this.items = items
         if (activity != null) {
             this.activity = activity
@@ -28,10 +28,12 @@ class NewsListAdapter() : RecyclerView.Adapter<NewsListAdapter.CustomViewHolder>
         notifyDataSetChanged()
     }
 
-    class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title: TextView = itemView.findViewById(R.id.title)
-        val desc: TextView = itemView.findViewById(R.id.description)
-        val imageBox: ImageView = itemView.findViewById(R.id.imageref)
+    class CustomViewHolder(binding: NewsListRowBinding)
+        : RecyclerView.ViewHolder(binding.root) {
+        val title: TextView = binding.title
+        val desc: TextView = binding.description
+        val imageBox: ImageView = binding.imageref
+
 
     }
 
@@ -39,16 +41,17 @@ class NewsListAdapter() : RecyclerView.Adapter<NewsListAdapter.CustomViewHolder>
         parent: ViewGroup,
         viewType: Int,
     ): CustomViewHolder {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.news_list_row, parent, false)
-        return CustomViewHolder(view)
+
+        val binding =
+          NewsListRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+
+        return CustomViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         val itemsViewModel = items[position]
 
-        if (itemsViewModel.imageHref!=null && itemsViewModel.imageHref.isNotEmpty() ) {
-
+        if (itemsViewModel.imageHref !=null) {
                 holder.title.text = itemsViewModel.title
                 holder.desc.text = itemsViewModel.description
                 var imgUrl = itemsViewModel.imageHref.replace("http", "https")
@@ -63,4 +66,5 @@ class NewsListAdapter() : RecyclerView.Adapter<NewsListAdapter.CustomViewHolder>
     override fun getItemCount(): Int {
         return items.size
     }
+
 }
