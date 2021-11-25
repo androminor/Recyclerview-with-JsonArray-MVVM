@@ -8,6 +8,7 @@ import com.example.recyclerviewjsonarray.model.NewsList
 import com.example.recyclerviewjsonarray.network.remote.RetrofitInstanceDto
 import com.example.recyclerviewjsonarray.network.remote.RetrofitServiceDto
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class NewsViewModel:ViewModel() {
@@ -20,6 +21,7 @@ class NewsViewModel:ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             val retrofitInstance = RetrofitInstanceDto.getRetrofitInstance().create(RetrofitServiceDto::class.java)
             val response = retrofitInstance.getDataFromApi()
+            delay(2000)
             newsMutableLiveData.postValue(response)
         }
     }
