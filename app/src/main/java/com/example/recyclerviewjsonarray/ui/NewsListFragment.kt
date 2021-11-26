@@ -1,53 +1,58 @@
 package com.example.recyclerviewjsonarray.ui
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.recyclerviewjsonarray.R
+import com.example.recyclerviewjsonarray.databinding.FragmentNewsListBinding
 import kotlinx.android.synthetic.main.fragment_news_list.*
 
 
 class NewsListFragment : Fragment() {
 
-
-    private  lateinit var viewModel :NewsViewModel
+    private lateinit var binding: FragmentNewsListBinding
+    private val viewModel: NewsViewModel by viewModels()
     private lateinit var newsAdapter: NewsListAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
-
-        val view = inflater.inflate(R.layout.fragment_news_list, container,false)
-        viewModel = ViewModelProvider(this)[NewsViewModel::class.java]
-
+    ): View {
+        binding = FragmentNewsListBinding.inflate(layoutInflater)
+        initAdapterModel()
         initViewModel()
-        initViewModel(view)
-
-
-
-        // Inflate the layout for this fragment
-        return view
+        return binding.root
 
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.scrolltotop,menu)
+        super.onCreateOptionsMenu(menu, inflater)
 
+    }
 
-    private fun initViewModel(view: View?) {
-    val recyclerView =view?.findViewById<RecyclerView>(R.id.recyclerView)
-        recyclerView?.layoutManager = LinearLayoutManager(activity)
-        val decorationItem = DividerItemDecoration(activity,DividerItemDecoration.HORIZONTAL)
-        recyclerView?.addItemDecoration(decorationItem)
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        binding.recyclerView.smoothScrollToPosition(0)
 
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun initAdapterModel() {
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         newsAdapter = NewsListAdapter()
-        recyclerView?.adapter = newsAdapter
+        binding.recyclerView.adapter = newsAdapter
     }
 
     private fun initViewModel() {
@@ -59,6 +64,7 @@ class NewsListFragment : Fragment() {
                 newsAdapter.setLatestData(it.rows,activity)
             }
             else {
+                showProgressBar()
                 Toast.makeText(activity,"No data",Toast.LENGTH_LONG).show()
             }
         })
