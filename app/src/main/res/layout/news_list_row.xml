@@ -9,51 +9,53 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="372dp"
-        android:layout_height="20dp"
-        android:text=""
-        android:textColor="@android:color/holo_blue_dark"
+        android:layout_width="375dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/title"
+        android:textColor="@color/hextitle"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/description"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/description"
-        android:layout_width="254dp"
-        android:layout_height="97dp"
+        android:layout_width="236dp"
+        android:layout_height="158dp"
         android:layout_marginTop="8dp"
-        android:text=""
+        android:text="@string/desc"
         android:textAlignment="textStart"
-        android:textSize="10sp"
+        android:textSize="12sp"
         android:textStyle="normal|bold"
+        android:textColor="@color/hexdesc"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageref"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/title"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageref"
-        android:layout_width="117dp"
-        android:layout_height="56dp"
+        android:layout_width="104dp"
+        android:layout_height="156dp"
         android:contentDescription="@string/image"
         app:layout_constraintBottom_toBottomOf="@+id/description"
-        app:layout_constraintEnd_toEndOf="@+id/title"
+        app:layout_constraintStart_toEndOf="@+id/description"
         app:layout_constraintTop_toBottomOf="@+id/title"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.75"
         tools:srcCompat="@tools:sample/avatars" />
+
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toBottomOf="@+id/imageref"
-        app:layout_constraintEnd_toEndOf="@+id/imageref"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/title"
         app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.6"
         tools:ignore="MissingConstraints" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

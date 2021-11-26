@@ -2,6 +2,7 @@ package com.example.recyclerviewjsonarray.ui
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,7 +55,8 @@ class NewsListAdapter() : RecyclerView.Adapter<NewsListAdapter.CustomViewHolder>
         if (itemsViewModel.imageHref !=null) {
                 holder.title.text = itemsViewModel.title
                 holder.desc.text = itemsViewModel.description
-                var imgUrl = itemsViewModel.imageHref.replace("http", "https")
+
+            var imgUrl = itemsViewModel.imageHref.replace("http", "https")
                 Glide.with(activity)
                     .load(imgUrl)
                     .into(holder.imageBox);
