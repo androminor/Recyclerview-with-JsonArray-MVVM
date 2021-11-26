@@ -6,10 +6,9 @@ import androidx.test.espresso.NoMatchingViewException
 import androidx.test.espresso.ViewAssertion
 import androidx.test.espresso.matcher.ViewMatchers.assertThat
 import org.hamcrest.CoreMatchers.`is`
-import org.hamcrest.Matcher
 
 /* Assertion class to assert check the recylerview adapter for expected counts*/
-class RecylerViewItemAssertions(i: Matcher<Int>) :ViewAssertion {
+class RecyclerViewItemAssertions :ViewAssertion {
     private var expectedCount = 0
 
     override fun check(view: View?, noViewFoundException: NoMatchingViewException?) {

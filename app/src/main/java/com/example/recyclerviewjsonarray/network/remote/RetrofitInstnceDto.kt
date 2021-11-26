@@ -1,16 +1,15 @@
 package com.example.recyclerviewjsonarray.network.remote
 
+import com.example.recyclerviewjsonarray.utility.ObjectUtils
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitInstanceDto {
-
+    //A builder pattern for Retrofit instance inside the companion object as a static access
     companion object {
-        private const val retroBaseUrl = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/"
-
         fun getRetrofitInstance():Retrofit {
             return Retrofit.Builder()
-                .baseUrl(retroBaseUrl)
+                .baseUrl(ObjectUtils.retroBaseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         }

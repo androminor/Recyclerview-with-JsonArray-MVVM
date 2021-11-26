@@ -5,6 +5,8 @@
       <map>
         <entry key="app/src/main/res/drawable/greatensign.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/drawable/greaterarrow.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/drawable/ic_baseline_arrow_forward_ios_24.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/drawable/ic_baseline_refresh_24.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/drawable/topmenubtn.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19293478260869565" />

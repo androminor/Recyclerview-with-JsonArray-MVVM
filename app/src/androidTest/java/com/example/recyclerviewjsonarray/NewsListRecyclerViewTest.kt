@@ -6,13 +6,12 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import com.example.recyclerviewjsonarray.CustomMatchers.Companion.withItemCount
-import org.hamcrest.Matchers.greaterThan
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4ClassRunner::class)
-class NewsListFragmentTest {
+class NewsListRecyclerViewTest {
     //When the view gets attached to the recyclerview
     @get: Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
@@ -40,7 +39,7 @@ class NewsListFragmentTest {
     //This test counts the items more then 2 & is passed
     @Test
     fun recyclerview_counting_items() {
-        onView(withId(R.id.recyclerView)).check(RecylerViewItemAssertions(greaterThan(2)));
+        onView(withId(R.id.recyclerView)).check(RecyclerViewItemAssertions());
     }
 
 
