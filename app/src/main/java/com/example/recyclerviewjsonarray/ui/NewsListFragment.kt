@@ -1,21 +1,20 @@
 package com.example.recyclerviewjsonarray.ui
 
+
 import android.os.Bundle
+
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
+
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.recyclerviewjsonarray.R
 import com.example.recyclerviewjsonarray.databinding.FragmentNewsListBinding
 import kotlinx.android.synthetic.main.fragment_news_list.*
 
-
-class NewsListFragment : Fragment() {
+//The view of MVVM architecture
+open class NewsListFragment : Fragment() {
 
     private lateinit var binding: FragmentNewsListBinding
     private val viewModel: NewsViewModel by viewModels()
@@ -24,6 +23,7 @@ class NewsListFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
+
     }
 
     override fun onCreateView(
@@ -33,6 +33,7 @@ class NewsListFragment : Fragment() {
         binding = FragmentNewsListBinding.inflate(layoutInflater)
         initAdapterModel()
         initViewModel()
+
         return binding.root
 
     }
@@ -66,10 +67,14 @@ class NewsListFragment : Fragment() {
             else {
                 showProgressBar()
                 Toast.makeText(activity,"No data",Toast.LENGTH_LONG).show()
+
             }
         })
         viewModel.makeApiCall()
     }
+
+
+
     private fun hideProgressBar() {
         progressBar.visibility = View.INVISIBLE
     }

@@ -1,15 +1,6 @@
 package com.example.recyclerviewjsonarray.ui
 
-import android.app.Application
-import android.content.Context
-import android.net.ConnectivityManager
-import android.net.ConnectivityManager.TYPE_ETHERNET
-import android.net.ConnectivityManager.TYPE_WIFI
-import android.net.NetworkCapabilities.*
-import android.os.Build
-import android.provider.ContactsContract.CommonDataKinds.Email.TYPE_MOBILE
 import androidx.lifecycle.*
-import com.example.recyclerviewjsonarray.NewsApplication
 import com.example.recyclerviewjsonarray.model.NewsList
 import com.example.recyclerviewjsonarray.network.remote.RetrofitInstanceDto
 import com.example.recyclerviewjsonarray.network.remote.RetrofitServiceDto
@@ -17,12 +8,21 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class NewsViewModel(app:Application): AndroidViewModel(app) {
+//viewmodel for handling clean archietecture
+class NewsViewModel(): ViewModel() {
+    //Mutable live data for the news list
     var newsMutableLiveData: MutableLiveData<NewsList> = MutableLiveData()
 
+    //viewmodel will observe the latest updated data with the help of mutable live data
     fun newsListObserver():MutableLiveData<NewsList> {
         return newsMutableLiveData
     }
+
+/*  making an api call using viewmodel scope (custom coroutines scope can be used as well)
+    launch is like a builder . Here it is launching Dispatcher.IO for memory intensive operation
+    Now inside we will create synchronized retrofit instance and fetch the response
+    in the form of getDataFromApi() with a delay of 2 seconds respectively
+    post value is called lastly for setting the value from a background thread */
     fun makeApiCall () {
         viewModelScope.launch(Dispatchers.IO) {
             val retrofitInstance = RetrofitInstanceDto.getRetrofitInstance().create(RetrofitServiceDto::class.java)
@@ -32,31 +32,5 @@ class NewsViewModel(app:Application): AndroidViewModel(app) {
         }
     }
 
-    private fun hasNetworkConnection():Boolean {
-        val connectivityMan = getApplication<NewsApplication>()
-            .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val activeNet = connectivityMan.activeNetwork ?: return false
-            val capabilities = connectivityMan.getNetworkCapabilities(activeNet) ?: return false
-            return when{
-                capabilities.hasTransport(TRANSPORT_WIFI)->true
-                capabilities.hasTransport(TRANSPORT_CELLULAR)->true
-                capabilities.hasTransport(TRANSPORT_ETHERNET)->true
-                else -> false
-            }
-        }
-        else {
-            connectivityMan.activeNetworkInfo?.run {
-                return when(type)
-                {
-                    TYPE_WIFI -> true
-                    TYPE_MOBILE->true
-                    TYPE_ETHERNET->true
-                    else -> false
-                }
-            }
-        }
-        return false
-    }
 
 }
