@@ -15,17 +15,23 @@ private const val TAG ="NewsViewModel"
 //viewmodel for handling clean archietecture
  class NewsViewModel : ViewModel() {
     //Mutable live data for the news list
-  private val newsMutableLiveData: MutableLiveData<NewsList>
+  private val _newsMutableLiveData: MutableLiveData<NewsList> = MutableLiveData()
 
+  val newsMutableLiveData : LiveData<NewsList> get() =
+      _newsMutableLiveData
 
     //viewmodel will observe the latest updated data with the help of mutable live data
-   fun newsListObserver():MutableLiveData<NewsList> {
+   fun newsListObserver(): LiveData<NewsList> {
        return newsMutableLiveData
   }
     init {
         Log.i(TAG,"init")
-        newsMutableLiveData = MutableLiveData()
-
+        viewModelScope.launch(Dispatchers.IO) {
+            val retrofitInstance = RetrofitInstanceDto.getRetrofitInstance().create(RetrofitServiceDto::class.java)
+            val response = retrofitInstance.getDataFromApi()
+            delay(1500)
+            _newsMutableLiveData.postValue(response)
+        }
     }
 
  /* making an api call using viewmodel scope (custom coroutines scope can be used as well)
@@ -34,14 +40,6 @@ private const val TAG ="NewsViewModel"
     in the form of getDataFromApi() with a delay of 2 seconds respectively
     post value is called lastly for setting the value from a background thread */
 
-   fun makeApiCall (){
-        viewModelScope.launch(Dispatchers.IO) {
-            val retrofitInstance = RetrofitInstanceDto.getRetrofitInstance().create(RetrofitServiceDto::class.java)
-            val response = retrofitInstance.getDataFromApi()
-            delay(1500)
-            newsMutableLiveData.postValue(response)
-        }
-    }
 
 
 

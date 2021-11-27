@@ -40,7 +40,7 @@ class NewsListFragment : Fragment() {
         Log.i(TAG,"onCreate")
 
         //Creating the observer which updates the UI(Main Thread)
-        viewmodel.newsListObserver().observe(viewLifecycleOwner, {
+        viewmodel.newsMutableLiveData.observe(viewLifecycleOwner, {
             if(it!=null )
             {
                 hideProgressBar()
@@ -53,7 +53,7 @@ class NewsListFragment : Fragment() {
             }
 
         })
-        viewmodel.makeApiCall()
+
         initAdapterModel()
         return binding.root
 
