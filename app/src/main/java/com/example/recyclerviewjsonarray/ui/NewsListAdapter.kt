@@ -2,15 +2,12 @@ package com.example.recyclerviewjsonarray.ui
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Color
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.recyclerviewjsonarray.R
 import com.example.recyclerviewjsonarray.databinding.NewsListRowBinding
 import com.example.recyclerviewjsonarray.model.RecyclerData
 

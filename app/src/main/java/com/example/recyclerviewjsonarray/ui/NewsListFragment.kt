@@ -1,7 +1,6 @@
 package com.example.recyclerviewjsonarray.ui
 
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 
@@ -10,7 +9,6 @@ import androidx.fragment.app.Fragment
 import android.widget.Toast
 
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recyclerviewjsonarray.R
 import com.example.recyclerviewjsonarray.databinding.FragmentNewsListBinding
