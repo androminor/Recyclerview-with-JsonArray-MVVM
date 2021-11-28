@@ -25,7 +25,8 @@ Below are the snapshot of app with explanations:
 ![Screenshot_1638097853](https://user-images.githubusercontent.com/34192499/143765593-dd13d6a3-7ba0-48a3-9278-5705637b52ed.png)
 
 **Showcase of the app**
-![Screenshot_1638097595](https://user-images.githubusercontent.com/34192499/143765427-427e3c72-2d51-4f52-95aa-13020e32bbc8.png)
+![Screenshot_1638113758](https://user-images.githubusercontent.com/34192499/143775000-4d633f4f-e7a6-4812-b7bc-35cad7d4d28e.png)
+
 
 UI Test with passed and failed error state :
 
