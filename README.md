@@ -13,6 +13,8 @@ E) A Progress bar is given with delay
 
 F) Dynamic recycler view list is maintained according to the data 
 
+Below are the snapshot of app with explanations:
+
 **While network connection not available inside the app**
 ![Screenshot_1638097785](https://user-images.githubusercontent.com/34192499/143765541-f751ca10-0edb-4516-b569-e4d823d0ae21.png)
 
