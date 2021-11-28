@@ -3,7 +3,7 @@
 A) This app fetches data using Coroutines and displays it in an recycler view using MVVM architecture  
 pattern- Viewmodel observers and Livedata
  
-B)Scroll to top feature has been provided on the action bar. 
+B) Scroll to top feature has been provided on the action bar. 
 
 C) Both unit(Coroutines) and UI Espresso tests cases(Data enter and error state) included.
 
