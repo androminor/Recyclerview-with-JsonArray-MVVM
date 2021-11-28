@@ -13,6 +13,16 @@ E) A Progress bar is given with delay
 
 F) Dynamic recycler view list is maintained according to the data 
 
+**While network connection not available inside the app**
+![Screenshot_1638097785](https://user-images.githubusercontent.com/34192499/143765541-f751ca10-0edb-4516-b569-e4d823d0ae21.png)
+
+**When app is on restart state without connection**
+![Screenshot_1638097812](https://user-images.githubusercontent.com/34192499/143765584-27a3cf21-9fea-4801-9dbd-2d7c81ce9415.png)
+
+**When app connects with the any form of network**
+![Screenshot_1638097853](https://user-images.githubusercontent.com/34192499/143765593-dd13d6a3-7ba0-48a3-9278-5705637b52ed.png)
+
+**Showcase of the app**
 ![Screenshot_1638097595](https://user-images.githubusercontent.com/34192499/143765427-427e3c72-2d51-4f52-95aa-13020e32bbc8.png)
 
 UI Test with passed and failed error state :
