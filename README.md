@@ -13,7 +13,7 @@ E) A Progress bar is given with delay
 
 F) Dynamic recycler view list is maintained according to the data 
 
-![Screenshot_1638094856](https://user-images.githubusercontent.com/34192499/143764022-47215413-61e9-4997-b08b-701fbd898d16.png)
+![Screenshot_1638097595](https://user-images.githubusercontent.com/34192499/143765427-427e3c72-2d51-4f52-95aa-13020e32bbc8.png)
 
 UI Test with passed and failed error state :
 
