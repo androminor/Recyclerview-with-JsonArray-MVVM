@@ -5,13 +5,13 @@ pattern is used. Jetpack library is used mainly Livedata, Viewmodel.
 
 B) Scroll to top feature has been provided on the action bar. 
 
-C) Both unit(Coroutines) and UI Espresso tests cases(Data enter and error state) included.
+C) Both Unit(Coroutines) and UI Espresso tests cases(Data enter and error state) included.
 
-D) Network connection check has been provided.
+D) Network connection check has been provided through a alert dialog.
 
-E) A Progress bar is given with delay
+E) A Progress bar is given with a delay.
 
-F) Dynamic recycler view list is maintained according to the data 
+F) Dynamic recycler view is maintained according to the data. 
 
 Below are the snapshot of app with explanations:
 
