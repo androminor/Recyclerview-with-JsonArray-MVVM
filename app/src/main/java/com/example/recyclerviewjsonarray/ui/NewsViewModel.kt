@@ -5,6 +5,7 @@ import androidx.lifecycle.*
 import com.example.recyclerviewjsonarray.model.NewsList
 import com.example.recyclerviewjsonarray.network.remote.RetrofitInstanceDto
 import com.example.recyclerviewjsonarray.network.remote.RetrofitServiceDto
+import com.example.recyclerviewjsonarray.utility.Event
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -14,13 +15,13 @@ private const val TAG ="NewsViewModel"
 //viewmodel for handling clean archietecture
  class NewsViewModel : ViewModel() {
     //Mutable live data for the news list
-  private val _newsMutableLiveData: MutableLiveData<NewsList> = MutableLiveData()
+  private val _newsMutableLiveData: MutableLiveData<Event<NewsList>> = MutableLiveData()
 
-  val newsMutableLiveData : LiveData<NewsList> get() =
+  val newsMutableLiveData : LiveData<Event<NewsList>> get() =
       _newsMutableLiveData
 
     //viewmodel will observe the latest updated data with the help of mutable live data
-   fun newsListObserver(): LiveData<NewsList> {
+   fun newsListObserver(): LiveData<Event<NewsList>> {
        return newsMutableLiveData
   }
 
@@ -36,7 +37,10 @@ private const val TAG ="NewsViewModel"
             val retrofitInstance = RetrofitInstanceDto.getRetrofitInstance().create(RetrofitServiceDto::class.java)
             val response = retrofitInstance.getDataFromApi()
             delay(1500)
-            _newsMutableLiveData.postValue(response)
+            with(_newsMutableLiveData) {
+                delay(1500)
+                postValue(Event(response))
+            }
         }
     }
 

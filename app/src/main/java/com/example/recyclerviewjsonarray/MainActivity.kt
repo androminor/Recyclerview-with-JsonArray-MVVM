@@ -22,26 +22,38 @@ class MainActivity : AppCompatActivity() {
         //Changing the Action bar title
         supportActionBar?.title = "NewsreadyAussie"
         //Setting up NewsListFragment
-        setupFragment()
+        hasNetworkConnection()
         /*
         checking network connection if present move to the NewsListFragment
         other wise alert dialog box for checking internet connection */
 
         if (hasNetworkConnection()) {
-          setupFragment()
+            setupFragment()
         } else {
-             AlertDialog.Builder(this).setTitle("No Internet Connection")
+            AlertDialog.Builder(this).setTitle("No Internet Connection")
                 .setMessage("Please check your internet connection and try again")
                 .setPositiveButton(android.R.string.ok) { dialogInterface, Int ->
                     dialogInterface?.dismiss()
-                    finish()
                 }
                 .setIcon(android.R.drawable.ic_dialog_alert).show()
         }
 
         refreshButton.setOnClickListener {
             //again calling the NewsListFragment for refreshing resources
-          setupFragment()
+            if(hasNetworkConnection())
+            {
+                setupFragment()
+
+            }
+            else {
+                AlertDialog.Builder(this).setTitle("No Internet Connection")
+                    .setMessage("Please check your internet connection and try again")
+                    .setPositiveButton(android.R.string.ok) { dialogInterface, Int ->
+                        dialogInterface?.dismiss()
+                    }
+                    .setIcon(android.R.drawable.ic_dialog_alert).show()
+            }
+            hasNetworkConnection()
         }
     }
     //Network connection criteria

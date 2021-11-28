@@ -38,12 +38,13 @@ class NewsListFragment : Fragment() {
         Log.i(TAG,"onCreate")
 
         //Creating the observer which updates the UI(Main Thread)
-        viewmodel.newsMutableLiveData.observe(viewLifecycleOwner, {
+        viewmodel.newsMutableLiveData.observe(this.viewLifecycleOwner, {
+
             if(it!=null )
             {
                 hideProgressBar()
                 Log.i(TAG,"Received the data")
-                newsAdapter.setLatestData(it.rows,activity)
+                newsAdapter.setLatestData(it.getContentIfNotHandled()!!.rows,activity)
             }
             else {
                 showProgressBar()
@@ -66,6 +67,8 @@ class NewsListFragment : Fragment() {
     private fun hideProgressBar() {
         progressBar.visibility = View.INVISIBLE
     }
+
+
 
     private fun showProgressBar() {
         progressBar.visibility = View.VISIBLE
