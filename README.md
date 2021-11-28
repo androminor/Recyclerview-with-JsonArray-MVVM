@@ -32,3 +32,8 @@ UI Test with passed and failed error state :
 Croutine Test :
 
 <img width="2042" alt="Screenshot 2021-11-28 at 4 22 00 PM" src="https://user-images.githubusercontent.com/34192499/143764929-b46759ac-01f0-439a-b9f9-9d9843dddfd7.png">
+
+Desired history of commits: 
+
+<img width="2042" alt="Screenshot 2021-11-28 at 4 22 00 PM" src="https://user-images.githubusercontent.com/34192499/143765920-868a4a15-4788-461f-b3db-094d16509e73.png">
+
