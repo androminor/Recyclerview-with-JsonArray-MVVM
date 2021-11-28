@@ -1,7 +1,7 @@
 # Recyclerview-with-JsonArray-MVVM
 
-A) This app fetches data using Coroutines and displays it in an recycler view using MVVM architecture  
-pattern- Viewmodel observers and Livedata
+A) This app fetches data using Coroutines and displays it in an recycler view.  MVVM clean architecture  
+pattern is used. Jetpack library is used mainly Livedata, Viewmodel.
 
 B) Scroll to top feature has been provided on the action bar. 
 
