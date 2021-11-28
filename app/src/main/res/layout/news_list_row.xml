@@ -9,8 +9,8 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="339dp"
-        android:layout_height="38dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="@string/title"
         android:textColor="@color/hextitle"
@@ -23,8 +23,8 @@
 
     <TextView
         android:id="@+id/description"
-        android:layout_width="231dp"
-        android:layout_height="144dp"
+        android:layout_width="291dp"
+        android:layout_height="115dp"
         android:layout_marginTop="8dp"
         android:text="@string/desc"
         android:textAlignment="textStart"
@@ -38,14 +38,14 @@
 
     <ImageView
         android:id="@+id/imageref"
-        android:layout_width="84dp"
-        android:layout_height="87dp"
+        android:layout_width="47dp"
+        android:layout_height="120dp"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="56dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/description"
         app:layout_constraintTop_toBottomOf="@+id/title"
-        app:layout_constraintVertical_bias="0.705"
+        app:layout_constraintVertical_bias="0.0"
         tools:srcCompat="@tools:sample/avatars" />
 
     <View
@@ -67,6 +67,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageref"
         app:layout_constraintStart_toEndOf="@+id/imageref"
         app:layout_constraintTop_toTopOf="@+id/imageref"
-        app:layout_constraintVertical_bias="0.19"
+        app:layout_constraintVertical_bias="0.458"
         app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>
