@@ -12,18 +12,18 @@ import kotlinx.coroutines.launch
 
 private const val TAG ="NewsViewModel"
 
-//viewmodel for handling clean architecture
- class NewsViewModel : ViewModel() {
+//viewmodel for handling clean archietecture
+class NewsViewModel : ViewModel() {
     //Mutable live data for the news list
-  private val _newsMutableLiveData: MutableLiveData<NewsList> = MutableLiveData()
+    private val _newsMutableLiveData: MutableLiveData<Event<NewsList>> = MutableLiveData()
 
-  val newsMutableLiveData : LiveData<NewsList> get() =
-      _newsMutableLiveData
+    val newsMutableLiveData : LiveData<Event<NewsList>> get() =
+        _newsMutableLiveData
 
     //viewmodel will observe the latest updated data with the help of mutable live data
-   fun newsListObserver(): LiveData<NewsList> {
-       return newsMutableLiveData
-  }
+    fun newsListObserver(): LiveData<Event<NewsList>> {
+        return newsMutableLiveData
+    }
 
     /* making an api call using viewmodel scope (custom coroutines scope can be used as well)
        launch is like a builder . Here it is launching Dispatcher.IO for memory intensive operation
@@ -31,21 +31,19 @@ private const val TAG ="NewsViewModel"
        in the form of getDataFromApi() with a delay of 2 seconds respectively
        post value is called lastly for setting the value from a background thread */
 
-      fun getDataFromApi() {
+    init {
         Log.i(TAG,"init")
         viewModelScope.launch(Dispatchers.IO) {
             val retrofitInstance = RetrofitInstanceDto.getRetrofitInstance().create(RetrofitServiceDto::class.java)
             val response = retrofitInstance.getDataFromApi()
             with(_newsMutableLiveData) {
                 delay(1500)
-                postValue(response)
+                postValue(Event(response))
             }
         }
     }
+
+
+
+
 }
-
-
-
-
-
-
