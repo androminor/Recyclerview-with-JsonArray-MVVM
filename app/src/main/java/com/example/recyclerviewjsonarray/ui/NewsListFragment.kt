@@ -44,7 +44,7 @@ class NewsListFragment : Fragment() {
             {
                 hideProgressBar()
                 Log.i(TAG,"Received the data")
-                newsAdapter.setLatestData(it.getContentIfNotHandled()!!.rows,activity)
+                newsAdapter.setLatestData(it.rows,activity)
             }
             else {
                 showProgressBar()
@@ -52,7 +52,7 @@ class NewsListFragment : Fragment() {
             }
 
         })
-
+        viewmodel.getDataFromApi()
         initAdapterModel()
         return binding.root
 
