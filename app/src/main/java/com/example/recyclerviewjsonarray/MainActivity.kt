@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
 
         refreshButton.setOnClickListener {
             checkNetwork()
-            setupFragment()
         }
         if (savedInstanceState != null) {
             fragment = supportFragmentManager.getFragment(
